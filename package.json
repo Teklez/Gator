@@ -1,0 +1,32 @@
+{
+  "name": "gator",
+  "version": "1.0.0",
+  "description": "Gator is a fast, lightweight CLI tool that lets you subscribe to RSS feeds, keep them updated automatically, and read post summaries right in your terminal. Whether it’s blogs, news sites, or podcasts, Gator puts all your content in one place without ads or distractions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsx ./src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Teklez/Gator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Teklez/Gator/issues"
+  },
+  "homepage": "https://github.com/Teklez/Gator#readme",
+  "devDependencies": {
+    "@types/node": "^24.2.0",
+    "drizzle-kit": "^0.31.4",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.4",
+    "postgres": "^3.4.7"
+  }
+}
