@@ -1,4 +1,3 @@
-import { loginHandler } from "./commandHandler";
 import { CommandHandler, CommandRegistry } from "./types";
 
 export function registerCommand(
@@ -9,7 +8,7 @@ export function registerCommand(
   registry[cmdName] = handler;
 }
 
-export function runCommand(
+export async function runCommand(
   registry: CommandRegistry,
   cmdName: string,
   ...args: string[]
@@ -19,5 +18,5 @@ export function runCommand(
     console.log(`Unknown command: ${cmdName}`);
     process.exit(1);
   }
-  handler(cmdName, ...args);
+  await handler(cmdName, ...args);
 }
