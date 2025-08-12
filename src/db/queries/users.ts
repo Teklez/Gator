@@ -14,10 +14,10 @@ export async function getUserByName(name: string) {
 }
 
 export async function getUsers() {
-  const result  = await db.select().from(users);
+  const result = await db.select().from(users);
   return result;
 }
 
 export async function resetUsers() {
-  await db.execute(sql.raw(`TRUNCATE TABLE users;`));
+  await db.execute(sql.raw(`TRUNCATE TABLE users CASCADE;`));
 }

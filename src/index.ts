@@ -1,11 +1,14 @@
-import { CommandRegistry } from "./types";
-import { registerCommand, runCommand } from "./utils";
 import {
+  addFeedHandler,
+  aggHandler,
+  feedsHandler,
   loginHandler,
   registerHandler,
   resetHandler,
   usersHandler,
 } from "./commandHandler";
+import { CommandRegistry } from "./types";
+import { registerCommand, runCommand } from "./utils";
 
 async function main() {
   const registry: CommandRegistry = {};
@@ -13,6 +16,9 @@ async function main() {
   registerCommand(registry, "register", registerHandler);
   registerCommand(registry, "reset", resetHandler);
   registerCommand(registry, "users", usersHandler);
+  registerCommand(registry, "agg", aggHandler);
+  registerCommand(registry, "addfeed", addFeedHandler);
+  registerCommand(registry, "feeds", feedsHandler);
 
   let commandlineArgs = process.argv;
   if (commandlineArgs.length <= 2) {
