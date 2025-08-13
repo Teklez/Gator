@@ -1,6 +1,7 @@
 import {
   addFeedHandler,
   aggHandler,
+  browseHandler,
   feedsHandler,
   followHandler,
   followingHandler,
@@ -26,6 +27,7 @@ async function main() {
   registerCommand(registry, "follow", middlewareLoggedIn(followHandler));
   registerCommand(registry, "following", middlewareLoggedIn(followingHandler));
   registerCommand(registry, "unfollow", middlewareLoggedIn(unfollowHandler));
+  registerCommand(registry, "browse", browseHandler);
 
   let commandlineArgs = process.argv;
   if (commandlineArgs.length <= 2) {

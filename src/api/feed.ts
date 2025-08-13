@@ -4,6 +4,7 @@ import {
   XMLValidator,
   XMLMetaData,
 } from "fast-xml-parser";
+import { FeedItem } from "src/types";
 
 export async function fetchFeed(feedURL: string) {
   const response = await fetch(feedURL, {
@@ -27,7 +28,7 @@ export async function fetchFeed(feedURL: string) {
     title,
     link,
     description,
-    item: [],
+    item: [] as FeedItem[],
   };
 
   if (Array.isArray(obj.channel.item)) {

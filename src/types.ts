@@ -21,3 +21,10 @@ export type CommandRegistry = Record<string, CommandHandler>;
 
 export type Feed = typeof feeds.$inferSelect;
 export type User = typeof users.$inferSelect;
+
+export type FeedItem = {
+  title: string;
+  link: string;
+  description: string;
+  pubDate: Date;
+};

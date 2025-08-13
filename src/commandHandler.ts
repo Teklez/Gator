@@ -7,6 +7,7 @@ import {
   getFeedFollowsForUser,
 } from "./db/queries/feed_follows";
 import { addFeed, getFeedByUrl, getFeeds } from "./db/queries/feeds";
+import { getPostsForUser } from "./db/queries/posts";
 import {
   createUser,
   getUserByName,
@@ -215,7 +216,25 @@ export async function followingHandler(
     console.log(`Error while fetching following feeds: ${e}`);
   }
 }
+export async function browseHandler(
+  cmd: string,
 
+  ...args: string[]
+) {
+  const limit = Number(args[0]) || 2;
+  try {
+    const posts = await getPostsForUser(limit);
+    if (posts) {
+      for (let post of posts) {
+        console.log(post.title);
+        console.log(post.description);
+        console.log(post.publishedAt);
+      }
+    }
+  } catch (e) {
+    console.log("Error while fetching posts");
+  }
+}
 // HELPERS
 
 function printFeed(feed: Feed, user: User) {
