@@ -11,6 +11,12 @@ export type CommandHandler = (
   ...args: string[]
 ) => Promise<void>;
 
+export type UserCommandHandler = (
+  cmdName: string,
+  user: User,
+  ...args: string[]
+) => Promise<void>;
+
 export type CommandRegistry = Record<string, CommandHandler>;
 
 export type Feed = typeof feeds.$inferSelect;

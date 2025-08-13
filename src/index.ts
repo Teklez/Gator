@@ -2,11 +2,15 @@ import {
   addFeedHandler,
   aggHandler,
   feedsHandler,
+  followHandler,
+  followingHandler,
   loginHandler,
   registerHandler,
   resetHandler,
+  unfollowHandler,
   usersHandler,
 } from "./commandHandler";
+import { middlewareLoggedIn } from "./middleware";
 import { CommandRegistry } from "./types";
 import { registerCommand, runCommand } from "./utils";
 
@@ -17,8 +21,11 @@ async function main() {
   registerCommand(registry, "reset", resetHandler);
   registerCommand(registry, "users", usersHandler);
   registerCommand(registry, "agg", aggHandler);
-  registerCommand(registry, "addfeed", addFeedHandler);
+  registerCommand(registry, "addfeed", middlewareLoggedIn(addFeedHandler));
   registerCommand(registry, "feeds", feedsHandler);
+  registerCommand(registry, "follow", middlewareLoggedIn(followHandler));
+  registerCommand(registry, "following", middlewareLoggedIn(followingHandler));
+  registerCommand(registry, "unfollow", middlewareLoggedIn(unfollowHandler));
 
   let commandlineArgs = process.argv;
   if (commandlineArgs.length <= 2) {
